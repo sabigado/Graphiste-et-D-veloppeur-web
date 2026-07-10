@@ -485,119 +485,64 @@ h2::after {
     .certificat-card h3 {
         max-width: 100%;
     }
-
-
-    /* ==========================================================================
-   INTEGRATION ACCORDÉONS CHEVRON DANS LES SKILL-CARDS
-   ========================================================================== */
-
-/* Rend la carte cliquable sur toute sa largeur et nettoie les bordures par défaut */
+/* --- Structure de l'accordéon dans la carte --- */
 .skill-card .accordion-item {
     border: none;
     background: transparent;
     margin: 0;
-    border-radius: 0;
-    overflow: hidden;
+    padding: 0;
+    width: 100%;
 }
 
-/* Cache la flèche d'origine du navigateur */
-.skill-card .accordion-item summary::-webkit-details-marker {
-    display: none;
-}
+/* --- NETTOYAGE COMPLET DES FLÈCHES NAVIGATEUR (▶) --- */
 .skill-card .accordion-item summary {
-    list-style: none;
-}
-
-/* En-tête de la compétence (titre + icône) */
-.skill-card .accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    font-size: 1.15rem;
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Style du chevron manuscrit (>) */
-.skill-card .accordion-icon {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: inline-block;
-    color: #718096;
-    transform: rotate(0deg); /* Oriente le chevron vers la droite initialement */
-    transition: transform 0.25s ease-in-out; /* Effet fluide de rotation */
-}
-
-/* Rotation à 90° vers le bas (v) quand l'accordéon s'ouvre */
-.skill-card .accordion-item[open] .accordion-icon {
-    transform: rotate(90deg);
-}
-
-/* Contenu textuel caché/affiché à l'intérieur */
-.skill-card .accordion-content {
-    padding: 5px 20px 20px 20px;
-    text-align: left;
-    color: #4a5568;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-    animation: slideDownFade 0.3s ease-out;
-}
-
-/* Animation subtile pour l'ouverture du texte */
-@keyframes slideDownFade {
-    from {
-        opacity: 0;
-        transform: translateY(-4px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Supprime le triangle noir par défaut sur TOUS les navigateurs (Chrome, Safari, Firefox) */
-.skill-card .accordion-item summary {
-    list-style: none; /* Pour Firefox et standards */
+    list-style: none !important; /* Pour Firefox / Standards */
+    display: block !important;    /* Force la disparition du comportement natif */
 }
 
 .skill-card .accordion-item summary::-webkit-details-marker,
 .skill-card .accordion-item summary::marker {
-    display: none !important; /* Pour Chrome, Safari et les moteurs modernes */
+    display: none !important;     /* Pour Chrome, Safari, Edge */
 }
 
-    /* Force l'alignement propre sur une seule ligne (titre à gauche, chevron à droite) */
+/* --- ALIGNEMENT PARFAIT SUR LA MÊME LIGNE (ENCADREMENT) --- */
 .skill-card .accordion-header {
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; /* Écritures à gauche <---> Chevron à droite */
+    align-items: center !important;     /* Aligne verticalement au centre */
     width: 100%;
     box-sizing: border-box;
-    padding: 15px 20px;
+    padding: 20px;                      /* Espace interne dans la carte */
     cursor: pointer;
     user-select: none;
 }
 
-/* Style de votre chevron personnalisé épais */
+/* --- STYLE DU CHEVRON EN GRAS (>) --- */
 .skill-card .accordion-icon {
-    font-family: 'Poppins', sans-serif; /* Aligné sur votre police de site */
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
-    font-weight: 700 !important; /* Force l'écriture épaisse (gras) */
-    color: #2b6cb0; /* Teinte bleutée ou selon votre charte */
-    display: inline-block;
-    transform: rotate(0deg);
-    transition: transform 0.25s ease-in-out;
+    font-weight: 700 !important;        /* Applique un style bien gras */
+    color: #2b6cb0;                     /* Couleur bleue */
+    display: inline-block !important;
+    transform: rotate(0deg);            /* Pointe vers la droite par défaut */
+    transition: transform 0.25s ease-in-out; /* Animation fluide */
+    margin-left: 10px;                  /* Sécurité pour ne pas coller le texte */
 }
 
-/* Rotation à l'ouverture */
+/* --- TRANSFORMATION EN (v) À L'OUVERTURE --- */
 .skill-card .accordion-item[open] .accordion-icon {
-    transform: rotate(90deg);
+    transform: rotate(90deg) !important; /* Pivote à 90 degrés vers le bas */
 }
 
-    
+/* --- ZONE DU TEXTE CACHÉ --- */
+.skill-card .accordion-content {
+    padding: 0 20px 20px 20px;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4a5568;
+}
 
-
-
+   
 
