@@ -558,6 +558,46 @@ h2::after {
         transform: translateY(0);
     }
 
+    /* Supprime le triangle noir par défaut sur TOUS les navigateurs (Chrome, Safari, Firefox) */
+.skill-card .accordion-item summary {
+    list-style: none; /* Pour Firefox et standards */
+}
+
+.skill-card .accordion-item summary::-webkit-details-marker,
+.skill-card .accordion-item summary::marker {
+    display: none !important; /* Pour Chrome, Safari et les moteurs modernes */
+}
+
+    /* Force l'alignement propre sur une seule ligne (titre à gauche, chevron à droite) */
+.skill-card .accordion-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Style de votre chevron personnalisé épais */
+.skill-card .accordion-icon {
+    font-family: 'Poppins', sans-serif; /* Aligné sur votre police de site */
+    font-size: 1.2rem;
+    font-weight: 700 !important; /* Force l'écriture épaisse (gras) */
+    color: #2b6cb0; /* Teinte bleutée ou selon votre charte */
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.25s ease-in-out;
+}
+
+/* Rotation à l'ouverture */
+.skill-card .accordion-item[open] .accordion-icon {
+    transform: rotate(90deg);
+}
+
+    
+
 
 
 
