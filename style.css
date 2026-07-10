@@ -485,94 +485,79 @@ h2::after {
     .certificat-card h3 {
         max-width: 100%;
     }
-/* ==========================================================================
-   STYLE POUR LES ACCORDÉONS (COMPÉTENCES & SERVICES)
+
+
+    /* ==========================================================================
+   INTEGRATION ACCORDÉONS CHEVRON DANS LES SKILL-CARDS
    ========================================================================== */
 
-/* Conteneur principal qui limite la largeur et centre les éléments */
-.accordion-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Style de chaque ligne d'accordéon */
-.accordion-item {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    margin-bottom: 12px;
+/* Rend la carte cliquable sur toute sa largeur et nettoie les bordures par défaut */
+.skill-card .accordion-item {
+    border: none;
+    background: transparent;
+    margin: 0;
+    border-radius: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
 }
 
-/* Supprime la flèche noire par défaut des navigateurs */
-.accordion-item summary::-webkit-details-marker {
+/* Cache la flèche d'origine du navigateur */
+.skill-card .accordion-item summary::-webkit-details-marker {
     display: none;
 }
-.accordion-item summary {
+.skill-card .accordion-item summary {
     list-style: none;
 }
 
-/* Style de l'en-tête (titre cliquable) */
-.accordion-header {
+/* En-tête de la compétence (titre + icône) */
+.skill-card .accordion-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 24px;
-    font-size: 1.1rem;
+    padding: 15px 20px;
+    font-size: 1.15rem;
     font-weight: 600;
-    color: #2d3748;
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.2s ease;
 }
 
-/* Effet de survol sur la ligne */
-.accordion-header:hover {
-    background-color: #f7fafc;
-}
-
-/* Style et transition de l'icône flèche (➔) */
-.accordion-icon {
-    font-size: 0.9rem;
+/* Style du chevron manuscrit (>) */
+.skill-card .accordion-icon {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline-block;
     color: #718096;
-    transition: transform 0.3s ease;
+    transform: rotate(0deg); /* Oriente le chevron vers la droite initialement */
+    transition: transform 0.25s ease-in-out; /* Effet fluide de rotation */
 }
 
-/* Changements visuels lorsque l'accordéon est ouvert */
-.accordion-item[open] {
-    border-color: #cbd5e0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-/* Rotation de la flèche vers le bas lorsque c'est ouvert */
-.accordion-item[open] .accordion-icon {
+/* Rotation à 90° vers le bas (v) quand l'accordéon s'ouvre */
+.skill-card .accordion-item[open] .accordion-icon {
     transform: rotate(90deg);
 }
 
-/* Style du contenu textuel à l'intérieur */
-.accordion-content {
-    padding: 0 24px 20px 24px;
+/* Contenu textuel caché/affiché à l'intérieur */
+.skill-card .accordion-content {
+    padding: 5px 20px 20px 20px;
+    text-align: left;
     color: #4a5568;
     line-height: 1.6;
-    font-size: 1rem;
-    border-top: 1px solid #edf2f7;
-    background-color: #fff;
-    animation: slideDown 0.3s ease-out;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    animation: slideDownFade 0.3s ease-out;
 }
 
-/* Légère animation d'apparition fluide */
-@keyframes slideDown {
+/* Animation subtile pour l'ouverture du texte */
+@keyframes slideDownFade {
     from {
         opacity: 0;
-        transform: translateY(-5px);
+        transform: translateY(-4px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
-}
+
+
 
 
