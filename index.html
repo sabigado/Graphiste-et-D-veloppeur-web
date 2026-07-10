@@ -12,24 +12,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="main-header">
+  <nav class="navbar">
+    <div class="logo">Sabi Gado KORA</div>
 
-    <header class="main-header">
-        <nav class="navbar">
-            <div class="logo">Sabi Gado KORA</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#certificats">Certificats</a></li>
-                <li><a href="#parcours">Parcours</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- ☰ Bouton Hamburger avec le symbole Trigamme -->
+    <button class="hamburger" id="hamburger-btn">☰</button>
 
-    <main>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#hero">Accueil</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#certificats">Certificats</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
         <section id="hero" class="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
@@ -344,6 +345,13 @@
     <footer class="main-footer">
         <p>&copy; 2026 Sabi Gado KORA | sabigadokora-portfolio.com. Tous droits réservés.</p>
     </footer>
+<script>
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navLinks = document.getElementById('nav-links');
 
+  hamburgerBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 </body>
 </html>
