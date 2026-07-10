@@ -544,49 +544,74 @@ h2::after {
     color: #4a5568;
 }
 /* ==========================================
-   MENU HAMBURGER (Version Trigamme)
+   MENU HAMBURGER RESPONSIVE DEFINITIF
    ========================================== */
 
-/* Masqué par défaut sur ordinateur */
+/* 1. Configuration de la Navbar globale */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* 2. CACHER STRICTEMENT LE BOUTON SUR ORDINATEUR */
 .hamburger {
-  display: none;
+  display: none !important; /* Le !important force le bouton à rester invisible sur PC */
   background: transparent;
   border: none;
-  color: white;       /* Rend le symbole blanc */
-  font-size: 30px;    /* Ajuste la taille des 3 lignes */
+  color: #0f2027;
+  font-size: 32px;
   cursor: pointer;
-  z-index: 1000;
   padding: 0;
   line-height: 1;
 }
 
-/* Mode Mobile (Écrans de moins de 768px) */
+/* 3. Gestion de l'affichage classique des liens sur ORDINATEUR */
+.nav-links {
+  display: flex; /* Les liens restent horizontaux sur PC */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 4. MODE MOBILE (Écrans inférieurs à 768px) */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;  /* Fait apparaître le trigamme sur mobile */
+    display: block !important; /* Le bouton apparaît UNIQUEMENT sur mobile */
   }
 
   .nav-links {
-    display: none;   /* Cache les liens horizontaux */
+    display: none; /* Cache la liste horizontale */
     flex-direction: column;
     position: absolute;
-    top: 70px;       /* À ajuster selon la hauteur de votre navbar */
-    right: 0;
+    top: 100%;
+    left: 0;
     width: 100%;
-    background-color: #0f2027; /* La couleur de fond de votre menu mobile */
+    background-color: #112233; /* Fond sombre opaque pour mobile */
     padding: 20px 0;
     text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    z-index: 999;
   }
 
   .nav-links li {
     margin: 15px 0;
   }
 
-  /* Déclanché par le JavaScript pour afficher le menu */
+  .nav-links li a {
+    color: #ffffff !important; /* Liens bien blancs sur mobile */
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Affichage du menu mobile quand il est actif */
   .nav-links.active {
     display: flex;
   }
 }
-    
-   
 
