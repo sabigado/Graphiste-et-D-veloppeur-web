@@ -330,15 +330,23 @@
 <footer class="main-footer">
     <p>&copy; 2026 Sabi Gado KORA. Tous droits réservés.</p>
 </footer>
-
+    
+<!-- 🚀 SCRIPT JAVASCRIPT AMÉLIORÉ : FERMETURE AUTOMATIQUE DU MENU -->
 <script>
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const navLinks = document.getElementById('nav-links');
 
+  // 1. Gère l'ouverture/fermeture quand on clique sur le bouton ☰
   hamburgerBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
   });
-</script>
 
+  // 2. CORRECTION : Ferme automatiquement le menu dès qu'on clique sur un lien
+  const links = navLinks.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active'); // Enlève le menu bleu de l'écran
+    });
+</script>
 </body>
 </html>
