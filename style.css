@@ -543,6 +543,50 @@ h2::after {
     line-height: 1.6;
     color: #4a5568;
 }
+/* ==========================================
+   MENU HAMBURGER (Version Trigamme)
+   ========================================== */
 
+/* Masqué par défaut sur ordinateur */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;       /* Rend le symbole blanc */
+  font-size: 30px;    /* Ajuste la taille des 3 lignes */
+  cursor: pointer;
+  z-index: 1000;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Mode Mobile (Écrans de moins de 768px) */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;  /* Fait apparaître le trigamme sur mobile */
+  }
+
+  .nav-links {
+    display: none;   /* Cache les liens horizontaux */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;       /* À ajuster selon la hauteur de votre navbar */
+    right: 0;
+    width: 100%;
+    background-color: #0f2027; /* La couleur de fond de votre menu mobile */
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+
+  /* Déclanché par le JavaScript pour afficher le menu */
+  .nav-links.active {
+    display: flex;
+  }
+}
+    
    
 
