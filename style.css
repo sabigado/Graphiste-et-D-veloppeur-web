@@ -87,6 +87,20 @@ h2::after {
     letter-spacing: -0.5px;
 }
 
+/* LE BOUTON HAMBURGER (Caché sur ordinateur) */
+.hamburger {
+    display: none !important;
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 32px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    z-index: 1001;
+}
+
+/* Liens sur Ordinateur */
 .nav-links {
     display: flex;
     list-style: none;
@@ -186,7 +200,6 @@ h2::after {
     box-shadow: 0 6px 20px rgba(0, 204, 167, 0.5);
 }
 
-
 /* --- SECTION À PROPOS --- */
 .about-container {
     background-color: var(--bg-white);
@@ -254,7 +267,7 @@ h2::after {
     padding-top: 12px;
 }
 
-/* Styles pour la grille de Projets */
+/* Grille de Projets */
 .projets-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -278,7 +291,7 @@ h2::after {
     color: #64748b;
 }
 
-/* Styles pour la Timeline du Parcours */
+/* Timeline Parcours */
 .parcours-timeline {
     max-width: 700px;
     margin: 30px auto 0 auto;
@@ -428,7 +441,63 @@ h2::after {
     font-size: 0.9rem;
 }
 
-/* --- CODE RESPONSIVE (Media Queries) --- */
+/* --- STRUCTURES ACCORDÉONS --- */
+.skill-card .accordion-item, .service-box .accordion-item, .projet-card .accordion-item {
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.skill-card .accordion-item summary, .service-box .accordion-item summary, .projet-card .accordion-item summary {
+    list-style: none !important;
+    display: block !important;
+}
+
+.skill-card .accordion-item summary::-webkit-details-marker,
+.skill-card .accordion-item summary::marker,
+.service-box .accordion-item summary::marker,
+.projet-card .accordion-item summary::marker {
+    display: none !important;
+}
+
+.skill-card .accordion-header, .service-box .accordion-header, .projet-card .accordion-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+}
+
+.skill-card .accordion-icon, .service-box .accordion-icon, .projet-card .accordion-icon {
+    font-family: var(--font-family);
+    font-size: 1.2rem;
+    font-weight: 700 !important;
+    color: var(--primary-color);
+    display: inline-block !important;
+    transform: rotate(0deg);
+    transition: transform 0.25s ease-in-out;
+    margin-left: 10px;
+}
+
+.accordion-item[open] .accordion-icon {
+    transform: rotate(90deg) !important;
+}
+
+.accordion-content {
+    padding-top: 15px;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+
+/* --- TOUTES LES MEDIA QUERIES RECOUPÉES ET PROPRES --- */
 @media (max-width: 968px) {
     .contact-container {
         grid-template-columns: 1fr;
@@ -437,25 +506,55 @@ h2::after {
 }
 
 @media (max-width: 768px) {
+    /* Navbar Mobile propre */
     .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        padding: 15px 5%;
     }
 
-    /* Adaptations spécifiques pour la partie Hero sur mobile */
+    .hamburger {
+        display: block !important; /* Devient visible uniquement sur mobile */
+    }
+
+    /* Transformation de la liste de liens en menu déroulant mobile caché */
+    .nav-links {
+        display: none !important; 
+        flex-direction: column !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #112233; /* Fond bleu sombre opaque */
+        padding: 25px 0 !important;
+        text-align: center;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        gap: 0 !important;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        color: #ffffff !important; /* Liens parfaitement blancs sur mobile */
+        font-size: 1.1rem;
+        display: block;
+        width: 100%;
+    }
+
+    /* Classe activée par le JavaScript au clic */
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    /* Section Hero Mobile */
     .hero-section {
         text-align: center;
         padding-top: 140px;
     }
 
     .hero-container {
-        flex-direction: column-reverse; /* Met la photo en haut et le texte en bas */
+        flex-direction: column-reverse; /* Photo au-dessus, texte en dessous */
         gap: 30px;
     }
 
@@ -467,8 +566,8 @@ h2::after {
         font-size: 1.1rem;
     }
 
-    .hero-imge img {
-        width: 240px; /* Légèrement plus petite sur mobile */
+    .hero-image img {
+        width: 240px;
         height: 240px;
     }
 
@@ -485,133 +584,4 @@ h2::after {
     .certificat-card h3 {
         max-width: 100%;
     }
-/* --- Structure de l'accordéon dans la carte --- */
-.skill-card .accordion-item {
-    border: none;
-    background: transparent;
-    margin: 0;
-    padding: 0;
-    width: 100%;
 }
-
-/* --- NETTOYAGE COMPLET DES FLÈCHES NAVIGATEUR (▶) --- */
-.skill-card .accordion-item summary {
-    list-style: none !important; /* Pour Firefox / Standards */
-    display: block !important;    /* Force la disparition du comportement natif */
-}
-
-.skill-card .accordion-item summary::-webkit-details-marker,
-.skill-card .accordion-item summary::marker {
-    display: none !important;     /* Pour Chrome, Safari, Edge */
-}
-
-/* --- ALIGNEMENT PARFAIT SUR LA MÊME LIGNE (ENCADREMENT) --- */
-.skill-card .accordion-header {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important; /* Écritures à gauche <---> Chevron à droite */
-    align-items: center !important;     /* Aligne verticalement au centre */
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;                      /* Espace interne dans la carte */
-    cursor: pointer;
-    user-select: none;
-}
-
-/* --- STYLE DU CHEVRON EN GRAS (>) --- */
-.skill-card .accordion-icon {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700 !important;        /* Applique un style bien gras */
-    color: #2b6cb0;                     /* Couleur bleue */
-    display: inline-block !important;
-    transform: rotate(0deg);            /* Pointe vers la droite par défaut */
-    transition: transform 0.25s ease-in-out; /* Animation fluide */
-    margin-left: 10px;                  /* Sécurité pour ne pas coller le texte */
-}
-
-/* --- TRANSFORMATION EN (v) À L'OUVERTURE --- */
-.skill-card .accordion-item[open] .accordion-icon {
-    transform: rotate(90deg) !important; /* Pivote à 90 degrés vers le bas */
-}
-
-/* --- ZONE DU TEXTE CACHÉ --- */
-.skill-card .accordion-content {
-    padding: 0 20px 20px 20px;
-    text-align: left;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #4a5568;
-}
-/* ==========================================
-   MENU HAMBURGER RESPONSIVE DEFINITIF
-   ========================================== */
-
-/* 1. Configuration de la Navbar globale */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  background-color: #ffffff;
-  position: relative;
-}
-
-/* 2. CACHER STRICTEMENT LE BOUTON SUR ORDINATEUR */
-.hamburger {
-  display: none !important; /* Le !important force le bouton à rester invisible sur PC */
-  background: transparent;
-  border: none;
-  color: #0f2027;
-  font-size: 32px;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-}
-
-/* 3. Gestion de l'affichage classique des liens sur ORDINATEUR */
-.nav-links {
-  display: flex; /* Les liens restent horizontaux sur PC */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* 4. MODE MOBILE (Écrans inférieurs à 768px) */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block !important; /* Le bouton apparaît UNIQUEMENT sur mobile */
-  }
-
-  .nav-links {
-    display: none; /* Cache la liste horizontale */
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #112233; /* Fond sombre opaque pour mobile */
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-    z-index: 999;
-  }
-
-  .nav-links li {
-    margin: 15px 0;
-  }
-
-  .nav-links li a {
-    color: #ffffff !important; /* Liens bien blancs sur mobile */
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    display: block;
-  }
-
-  /* Affichage du menu mobile quand il est actif */
-  .nav-links.active {
-    display: flex;
-  }
-
-
