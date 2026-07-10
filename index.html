@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <header class="main-header">
   <nav class="navbar">
     <div class="logo">Sabi Gado KORA</div>
 
-    <!-- ☰ Bouton Hamburger avec le symbole Trigamme -->
- <button class="hamburger" id="hamburger-btn">☰</button>
+    <button class="hamburger" id="hamburger-btn">☰</button>
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero">Accueil</a></li>
@@ -31,6 +31,8 @@
     </ul>
   </nav>
 </header>
+
+<main>
         <section id="hero" class="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
@@ -60,19 +62,17 @@
             </div>
         </section>         
 
-        <!-- SECTION COMPÉTENCES CONVERTIE EN ACCORDÉONS DANS LES CARTES -->
         <section id="skills" class="skills-section">
             <h2>Mes Compétences</h2>
             <p class="section-intro">Voici la liste des compétences techniques que je mets à votre disposition pour concrétiser vos projets numériques.</p>
             <div class="skills-grid">
                 
-                <!-- 1. Informatique de base -->
                 <div class="skill-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
                              <span>Informatique de base</span>
                             <span class="accordion-icon">&gt;</span>
-                  </summary>
+                        </summary>
                         <div class="accordion-content">
                             <p class="desc">Je peux former des personnes en Word, Excel, PowerPoint et sur internet.</p>
                             <p class="example"><strong>Exemple :</strong> Je forme les utilisateurs pour la saisie de documents, la réalisation de calculs complexes sur Excel, la création de présentations sur PowerPoint et les recherches efficaces sur internet.</p>
@@ -80,7 +80,6 @@
                     </details>
                 </div>
 
-                <!-- 2. Création de contenu -->
                 <div class="skill-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -94,7 +93,6 @@
                     </details>
                 </div>
 
-                <!-- 3. Graphisme -->
                 <div class="skill-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -108,7 +106,6 @@
                     </details>
                 </div>
 
-                <!-- 4. Marketing digital -->
                 <div class="skill-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -122,7 +119,6 @@
                     </details>
                 </div>
 
-                <!-- 5. Gestion de projet agile -->
                 <div class="skill-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -136,7 +132,6 @@
                     </details>
                 </div>
 
-                <!-- 6. Utilisation de l'IA -->
                 <div class="skill-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -153,13 +148,11 @@
             </div>
         </section>
 
-        <!-- SECTION SERVICES CONVERTIE EN ACCORDÉONS -->
         <section id="services" class="services-section">
             <h2>Mes Services</h2>
             <p class="section-intro">Pour répondre au mieux à vos besoins de croissance, je propose trois types d'accompagnement sur mesure.</p>
             <div class="services-grid">
                 
-                <!-- 7. Accompagnement en informatique de base -->
                 <div class="service-box">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -173,7 +166,6 @@
                     </details>
                 </div>
 
-                <!-- Services : Création de contenu -->
                 <div class="service-box">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -187,7 +179,6 @@
                     </details>
                 </div>
 
-                <!-- Services : Graphisme -->
                 <div class="service-box">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -204,13 +195,11 @@
             </div>
         </section>
 
-        <!-- SECTION PROJETS CONVERTIE EN ACCORDÉONS -->
         <section id="projets" class="projets-section">
             <h2>Mes Projets</h2>
             <p class="section-intro">Voici quelques projets concrets que j'ai réalisés pour valider et mettre en pratique mes compétences techniques.</p>
             <div class="projets-grid">
                 
-                <!-- 8. Page HTML de présentation -->
                 <div class="projet-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -226,7 +215,6 @@
                     </details>
                 </div>
 
-                <!-- 9. Portfolio personnel HTML -->
                 <div class="projet-card">
                     <details class="accordion-item">
                         <summary class="accordion-header">
@@ -321,30 +309,28 @@
 
         <section id="contact" class="contact-section">
             <h2>Me contacter</h2>
-            <p>Vous avez un projet à Parakou, ailleurs au Bénin ou à distance ? Discutons-en dès aujourd'hui.</p>
+            <p class="section-intro">Vous avez un projet à Parakou, ailleurs au Bénin ou à distance ? Discutons-en dès aujourd'hui.</p>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <p><strong>Ville / Zone d'intervention :</strong> Parakou, Bénin et à distance.</p>
-                    <p><strong>Téléphone :</strong> 01 94 05 01 25 / 01 50 97 19 45</p>
-                    <p><strong>WhatsApp :</strong> 01 94 05 01 25</p>
-                    <p><strong>Email :</strong> sabigadokora@gmail.com</p>
-                    <a href="https://wa.me/2290194050125" class="btn-whatsapp" target="_blank">Échanger sur WhatsApp</a>
+                    <p><strong>📍 Zone d'intervention :</strong> Parakou, Banikoara, Bénin et à distance.</p>
+                    <p><strong>✉️ Email :</strong> contact@sabigadokora-portfolio.bj</p>
+                    <a href="https://wa.me/22900000000" class="btn-whatsapp" target="_blank">Discuter sur WhatsApp</a>
                 </div>
-
-                <form class="contact-form" onsubmit="event.preventDefault();">
+                <form class="contact-form">
                     <input type="text" placeholder="Votre Nom" required>
                     <input type="email" placeholder="Votre Email" required>
                     <textarea placeholder="Votre Message" rows="5" required></textarea>
-                    <button type="submit" class="btn-submit">Envoyer le message</button>
+                    <button type="submit" class="btn-submit">Envoyer</button>
                 </form>
             </div>
         </section>
-    </main>
+</main>
 
-    <footer class="main-footer">
-        <p>&copy; 2026 Sabi Gado KORA | sabigadokora-portfolio.com. Tous droits réservés.</p>
-    </footer>
+<footer class="main-footer">
+    <p>&copy; 2026 Sabi Gado KORA. Tous droits réservés.</p>
+</footer>
+
 <script>
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const navLinks = document.getElementById('nav-links');
@@ -353,5 +339,6 @@
     navLinks.classList.toggle('active');
   });
 </script>
+
 </body>
 </html>
