@@ -331,23 +331,35 @@
     <p>&copy; 2026 Sabi Gado KORA. Tous droits réservés.</p>
 </footer>
     
-<!-- 🚀 SCRIPT JAVASCRIPT AMÉLIORÉ : FERMETURE AUTOMATIQUE DU MENU -->
+<!-- 🚀 SCRIPT CORRECTIF FINAL : CHARGEMENT SÉCURISÉ ET FERMETURE AUTOMATIQUE -->
 <script>
+document.addEventListener("DOMContentLoaded", function() {
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const navLinks = document.getElementById('nav-links');
 
-  // 1. Gère l'ouverture/fermeture quand on clique sur le bouton ☰
-  hamburgerBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // 2. CORRECTION : Ferme automatiquement le menu dès qu'on clique sur un lien
-  const links = navLinks.querySelectorAll('a');
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active'); // Enlève le menu bleu de l'écran
+  if (hamburgerBtn && navLinks) {
+    // 1. Gère l'ouverture/fermeture quand on clique sur le bouton ☰
+    hamburgerBtn.addEventListener('click', function(e) {
+      e.stopPropagation(); // Empêche le clic de se propager ailleurs
+      navLinks.classList.toggle('active');
     });
-  });
+
+    // 2. Ferme automatiquement le menu dès qu'on clique sur un lien (Accueil, À propos, etc.)
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // 3. Bonus : Ferme le menu si on clique n'importe où ailleurs sur l'écran
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>
