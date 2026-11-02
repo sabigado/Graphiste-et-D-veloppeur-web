@@ -1,2 +1,2 @@
-# Graphiste-et-D-veloppeur-web
+# Community Manager, Graphiste, Développeur-web
 Portfolio
