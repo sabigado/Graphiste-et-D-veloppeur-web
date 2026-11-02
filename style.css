@@ -1,347 +1,873 @@
 
 /* =========================================
-   18. ADAPTATION AU HTML ACTUEL
+   1. CONFIGURATION GÉNÉRALE
 ========================================= */
 
-/* TITRES ET INTRODUCTIONS DES SECTIONS */
-
-section > h2 {
-    text-align: center;
-    color: var(--bleu-nuit);
-    font-size: clamp(26px, 3vw, 36px);
-    margin-bottom: 15px;
+:root {
+    --bleu: #0f4c81;
+    --bleu-nuit: #0a192f;
+    --bleu-clair: #eaf2f8;
+    --menthe: #00cca7;
+    --blanc: #ffffff;
+    --gris: #64748b;
+    --gris-clair: #f5f7fa;
+    --texte: #263445;
+    --ombre: 0 8px 25px rgba(10, 25, 47, 0.08);
+    --transition: all 0.3s ease;
 }
 
-.section-intro {
-    max-width: 750px;
-    margin: 0 auto 40px;
-    text-align: center;
-    color: var(--gris);
-    font-size: 14px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-/* =========================================
-   19. SECTION ACCUEIL ET PHOTO
-========================================= */
-
-.hero-section {
-    width: 100%;
-    padding: 70px 8%;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
-.hero-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-}
-
-.hero-content {
-    flex: 1;
-    max-width: 700px;
-}
-
-.hero-content h1 {
-    color: var(--blanc);
-}
-
-.hero-sub {
-    color: var(--menthe);
-    font-size: 17px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.hero-tagline {
-    color: #e0eaf3;
-    font-size: 15px;
-    margin-bottom: 30px;
-}
-
-/* AFFICHAGE DE LA PHOTO */
-
-.hero-image {
-    flex: 0 0 320px;
-    width: 320px;
-    height: 380px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 5px solid var(--menthe);
-    border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
-
-.hero-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 12px;
-}
-
-
-/* =========================================
-   20. SECTION À PROPOS
-========================================= */
-
-.about-text {
-    background: var(--gris-clair);
-    padding: 35px;
-    border-radius: 12px;
-    border-left: 5px solid var(--menthe);
-}
-
-.about-text > p {
-    color: var(--texte);
-    font-size: 14px;
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-.objective-box {
-    padding: 22px;
-    margin-top: 20px;
+body {
+    font-family: 'Poppins', sans-serif;
     background: var(--blanc);
-    border-radius: 8px;
+    color: var(--texte);
+    line-height: 1.7;
 }
 
-.objective-box h3 {
-    color: var(--bleu);
-    margin-bottom: 12px;
-    font-size: 19px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.objective-box p {
-    font-size: 14px;
-    color: var(--gris);
+ul {
+    list-style: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+section {
+    padding: 85px 8%;
 }
 
 
 /* =========================================
-   21. ACCORDÉONS DES COMPÉTENCES,
-       SERVICES ET PROJETS
+   2. EN-TÊTE ET NAVIGATION
 ========================================= */
 
-.accordion-item {
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     width: 100%;
+    background: var(--blanc);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.accordion-header {
+.navbar {
+    max-width: 1400px;
+    margin: auto;
+    padding: 16px 8%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--bleu-nuit);
+}
+
+.logo span {
+    color: var(--menthe);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bleu-nuit);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--menthe);
+}
+
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    list-style: none;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    margin: 5px;
+    background: var(--bleu-nuit);
+    border-radius: 3px;
+}
+
+
+/* =========================================
+   3. BOUTONS GÉNÉRAUX
+========================================= */
+
+.btn-primary,
+.btn-secondary,
+.btn-whatsapp,
+.btn-submit {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 7px;
+    font-size: 14px;
     font-weight: 600;
     transition: var(--transition);
 }
 
-.accordion-header::-webkit-details-marker {
-    display: none;
+.btn-primary {
+    background: var(--bleu);
+    color: var(--blanc);
 }
 
-.accordion-header::marker {
-    content: "";
+.btn-primary:hover {
+    background: var(--menthe);
+    color: var(--bleu-nuit);
+    transform: translateY(-3px);
 }
 
-.accordion-icon {
-    display: inline-block;
-    color: var(--menthe);
-    font-size: 18px;
-    font-weight: 700;
-    transition: transform 0.3s ease;
+.btn-secondary {
+    border: 2px solid var(--menthe);
+    color: var(--blanc);
 }
 
-.accordion-item[open] .accordion-icon {
-    transform: rotate(90deg);
-}
-
-.accordion-content {
-    padding-top: 18px;
-    animation: apparition 0.3s ease;
-}
-
-.accordion-content p {
-    margin-bottom: 12px;
-}
-
-.accordion-content ul {
-    list-style: disc;
-    padding-left: 22px;
-    margin-top: 10px;
-}
-
-.accordion-content li {
-    margin-bottom: 8px;
-    font-size: 14px;
-}
-
-.example {
-    margin-top: 12px;
-}
-
-.projet-meta {
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--gris);
-}
-
-@keyframes apparition {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* COULEURS DES ACCORDÉONS */
-
-.skill-card .accordion-header {
-    color: var(--bleu);
-    font-size: 16px;
-}
-
-.skill-card .accordion-content p {
-    color: var(--gris);
-    font-size: 13px;
-}
-
-.service-box .accordion-header {
-    color: var(--menthe);
-    font-size: 18px;
-}
-
-.service-box .accordion-content p,
-.service-box .accordion-content li {
-    color: #e0eaf3;
-}
-
-.service-box .accordion-content strong {
-    color: var(--menthe);
-}
-
-.projet-card .accordion-header {
-    color: var(--bleu);
-    font-size: 17px;
-}
-
-.projet-card .accordion-content p {
-    color: var(--gris);
-    font-size: 13px;
-}
-
-.projet-card .accordion-content a {
-    color: var(--bleu);
-    font-weight: 600;
-}
-
-.projet-card .accordion-content a:hover {
-    color: var(--menthe);
+.btn-secondary:hover {
+    background: var(--menthe);
+    color: var(--bleu-nuit);
+    transform: translateY(-3px);
 }
 
 
 /* =========================================
-   22. AJUSTEMENTS RESPONSIVES
+   4. SECTION ACCUEIL
+========================================= */
+
+.hero-section {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        120deg,
+        var(--bleu-nuit),
+        var(--bleu)
+    );
+    color: var(--blanc);
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-subtitle {
+    color: var(--menthe);
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.hero-content h1 {
+    font-size: clamp(32px, 5vw, 55px);
+    line-height: 1.25;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 span {
+    color: var(--menthe);
+}
+
+.hero-content h2 {
+    font-size: clamp(17px, 2vw, 23px);
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+
+.hero-content > p:not(.hero-subtitle) {
+    max-width: 650px;
+    font-size: 15px;
+    color: #e0eaf3;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+/* =========================================
+   5. TITRES DES SECTIONS
+========================================= */
+
+.section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 50px;
+}
+
+.section-heading h2 {
+    color: var(--bleu-nuit);
+    font-size: clamp(26px, 3vw, 36px);
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.section-heading h2::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 4px;
+    background: var(--menthe);
+    margin: 12px auto 0;
+    border-radius: 5px;
+}
+
+.section-heading p {
+    color: var(--gris);
+    font-size: 14px;
+}
+
+
+/* =========================================
+   6. SECTION À PROPOS
+========================================= */
+
+.about-section {
+    background: var(--blanc);
+}
+
+.about-container {
+    max-width: 950px;
+    margin: auto;
+}
+
+.about-content {
+    background: var(--gris-clair);
+    padding: 40px;
+    border-radius: 12px;
+    border-left: 5px solid var(--menthe);
+}
+
+.about-content h3 {
+    color: var(--bleu);
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--texte);
+    font-size: 14px;
+    margin-bottom: 17px;
+    text-align: justify;
+}
+
+.about-content .btn-primary {
+    margin-top: 12px;
+}
+
+
+/* =========================================
+   7. SECTION COMPÉTENCES
+========================================= */
+
+.skills-section {
+    background: var(--gris-clair);
+}
+
+.skills-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--blanc);
+    padding: 30px 25px;
+    border-radius: 10px;
+    border-bottom: 4px solid var(--menthe);
+    box-shadow: var(--ombre);
+    transition: var(--transition);
+}
+
+.skill-card:hover {
+    transform: translateY(-7px);
+}
+
+.skill-card h3 {
+    color: var(--bleu);
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    color: var(--gris);
+    font-size: 13px;
+}
+
+
+/* =========================================
+   8. SECTION SERVICES
+========================================= */
+
+.services-section {
+    background: var(--blanc);
+}
+
+.services-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.service-box {
+    padding: 35px;
+    background: var(--bleu-nuit);
+    color: var(--blanc);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.service-box:hover {
+    background: var(--bleu);
+    transform: translateY(-5px);
+}
+
+.service-box h3 {
+    color: var(--menthe);
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.service-box p {
+    color: #e0eaf3;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   9. SECTION PROJETS
+========================================= */
+
+.projets-section {
+    background: var(--gris-clair);
+}
+
+.projets-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.projet-card {
+    background: var(--blanc);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--ombre);
+    border-top: 4px solid var(--menthe);
+    transition: var(--transition);
+}
+
+.projet-card:hover {
+    transform: translateY(-6px);
+}
+
+.projet-card h3 {
+    color: var(--bleu);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.projet-card p {
+    color: var(--gris);
+    font-size: 13px;
+}
+
+
+/* =========================================
+   10. SECTION CERTIFICATIONS
+========================================= */
+
+.certificats-section {
+    background: var(--blanc);
+}
+
+.certificats-list {
+    max-width: 950px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.certificat-card {
+    position: relative;
+    background: var(--gris-clair);
+    padding: 28px;
+    border-radius: 10px;
+    border-left: 4px solid var(--menthe);
+    transition: var(--transition);
+}
+
+.certificat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ombre);
+}
+
+.cert-date {
+    display: inline-block;
+    background: var(--bleu);
+    color: var(--blanc);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.certificat-card h3 {
+    color: var(--bleu-nuit);
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.certificat-card p {
+    color: var(--gris);
+    font-size: 13px;
+}
+
+
+/* =========================================
+   11. SECTION PARCOURS
+========================================= */
+
+.parcours-section {
+    background: var(--gris-clair);
+}
+
+.parcours-timeline {
+    max-width: 850px;
+    margin: auto;
+    position: relative;
+}
+
+.parcours-timeline::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 5px;
+    bottom: 5px;
+    width: 3px;
+    background: var(--menthe);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 55px;
+    margin-bottom: 30px;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 22px;
+    height: 22px;
+    background: var(--bleu);
+    border: 4px solid var(--menthe);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-panel {
+    background: var(--blanc);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--ombre);
+}
+
+.timeline-panel h3 {
+    color: var(--bleu);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.timeline-panel p {
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.timeline-panel span {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--menthe);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   12. SECTION CONTACT
+========================================= */
+
+.contact-section {
+    background: var(--blanc);
+}
+
+.contact-container {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.contact-info {
+    flex: 0.8;
+    min-width: 250px;
+    background: var(--bleu-nuit);
+    color: var(--blanc);
+    padding: 35px;
+    border-radius: 12px;
+}
+
+.contact-info h3 {
+    color: var(--menthe);
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.contact-info p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    overflow-wrap: anywhere;
+}
+
+.contact-info strong {
+    color: var(--menthe);
+}
+
+.btn-whatsapp {
+    margin-top: 15px;
+    background: #168f57;
+    color: var(--blanc);
+    text-align: center;
+}
+
+.btn-whatsapp:hover {
+    background: #20b66d;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   13. FORMULAIRE DE CONTACT
+========================================= */
+
+.contact-form-container {
+    flex: 1.2;
+    min-width: 280px;
+    background: var(--gris-clair);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: var(--ombre);
+}
+
+.contact-form-container h3 {
+    color: var(--bleu-nuit);
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--bleu-nuit);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d5dce5;
+    border-radius: 7px;
+    background: var(--blanc);
+    color: var(--texte);
+    font-size: 14px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--menthe);
+    box-shadow: 0 0 0 3px rgba(0, 204, 167, 0.12);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9aa6b2;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--bleu);
+    color: var(--blanc);
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-submit:hover {
+    background: var(--menthe);
+    color: var(--bleu-nuit);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   14. PIED DE PAGE
+========================================= */
+
+.main-footer {
+    background: var(--bleu-nuit);
+    color: var(--blanc);
+    text-align: center;
+    padding: 30px 8%;
+}
+
+.main-footer p {
+    font-size: 13px;
+    margin: 5px 0;
+    color: #d7e1eb;
+}
+
+
+/* =========================================
+   15. RESPONSIVE : TABLETTES
 ========================================= */
 
 @media screen and (max-width: 1024px) {
 
-    .hero-section {
-        padding-left: 5%;
-        padding-right: 5%;
+    section {
+        padding: 70px 5%;
     }
 
-    .hero-container {
-        gap: 30px;
+    .navbar {
+        padding: 15px 5%;
     }
 
-    .hero-image {
-        flex-basis: 280px;
-        width: 280px;
-        height: 340px;
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projets-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
+
+
+/* =========================================
+   16. RESPONSIVE : TÉLÉPHONES
+========================================= */
 
 @media screen and (max-width: 768px) {
 
-    .hero-section {
-        padding: 60px 6%;
+    section {
+        padding: 65px 6%;
     }
 
-    .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 35px;
+    .navbar {
+        padding: 15px 6%;
     }
 
-    .hero-content {
-        max-width: 100%;
+    .logo {
+        font-size: 20px;
     }
 
-    .hero-content h1 {
-        font-size: 30px;
+    .hamburger {
+        display: block;
     }
 
-    .hero-sub {
-        font-size: 15px;
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 20px 6%;
+        background: var(--blanc);
+        box-shadow: var(--ombre);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
     }
 
-    .hero-tagline {
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
         font-size: 14px;
     }
 
-    .hero-image {
-        flex: none;
-        width: 250px;
-        height: 290px;
-        margin: auto;
+    .hero-section {
+        min-height: 500px;
+        padding-top: 70px;
+        padding-bottom: 70px;
     }
 
-    .about-text {
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content h2 {
+        font-size: 17px;
+    }
+
+    .hero-content > p:not(.hero-subtitle) {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        text-align: center;
+    }
+
+    .skills-grid,
+    .services-grid,
+    .projets-grid,
+    .certificats-list {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
         padding: 25px;
     }
 
-    .hero-content .btn-primary {
-        display: inline-block;
+    .service-box,
+    .projet-card {
+        padding: 25px;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form-container {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .contact-info,
+    .contact-form-container {
+        padding: 25px;
     }
 
 }
 
+
+/* =========================================
+   17. RESPONSIVE : PETITS ÉCRANS
+========================================= */
+
 @media screen and (max-width: 480px) {
 
-    .hero-section {
-        padding: 50px 5%;
+    section {
+        padding: 55px 5%;
     }
 
     .hero-content h1 {
+        font-size: 29px;
+    }
+
+    .hero-content h2 {
+        font-size: 15px;
+    }
+
+    .section-heading h2 {
         font-size: 25px;
     }
 
-    .hero-image {
-        width: 220px;
-        height: 260px;
-    }
-
-    .section-intro {
+    .section-heading p {
         font-size: 13px;
     }
 
-    .accordion-header {
-        font-size: 14px;
+    .skill-card,
+    .certificat-card,
+    .timeline-panel {
+        padding: 22px;
+    }
+
+    .contact-form-container h3,
+    .contact-info h3 {
+        font-size: 19px;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-whatsapp,
+    .btn-submit {
+        font-size: 13px;
+        padding: 12px 18px;
     }
 
 }
